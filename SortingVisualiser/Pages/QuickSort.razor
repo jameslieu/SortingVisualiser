@@ -1,0 +1,87 @@
+﻿@page "/quick-sort"
+<PageTitle>Quick Sort</PageTitle>
+
+<div class="array-container">
+    @for (var i = 0; i < @array.Length; i++)
+    {
+        <div
+			class="array-bar"
+            style=@($"height: {@array[i]}px; {StyleForNumber(i)}")>
+        </div>
+    }
+</div>
+
+<button class="btn btn-light" disabled=@btnIsDisabled @onclick="Generate">Generate new array</button>
+<button class="btn btn-primary" disabled=@btnIsDisabled @onclick="Sort">Sort</button>
+
+@code {
+    private int hlLeft = -1;
+    private int hlRight = -1;
+    private int hlPivot = -1;
+
+    private bool btnIsDisabled = false;
+    private int[] array = ArrayGenerator.Generate();
+
+    private string StyleForNumber(int n)
+    {
+        if (n == hlLeft) return "background-color: #238BA6";
+        if (n == hlRight) return "background-color: #238BA6";
+        if (n == hlPivot) return "background-color: #83C447";
+        return "background-color: #B9F2E9";
+    }
+
+    private void Generate()
+    {
+        array = ArrayGenerator.Generate();
+    }
+
+    private async Task Sort()
+    {
+        btnIsDisabled = true;
+        await QuickSortFunc(array, 0, array.Length-1);
+        btnIsDisabled = false;
+    }
+
+    private async Task QuickSortFunc(int[] numbers, int left, int right)
+    {
+        int i = left;
+        int j = right;
+
+        var pivotIndex = (left + right) / 2;
+        var pivot = numbers[pivotIndex];
+		hlPivot = pivotIndex;
+
+        while (i < j)
+        {
+            while (numbers[i] < pivot)
+                i++;
+
+            while (numbers[j] > pivot)
+                j--;
+
+            if (i <= j)
+            {
+                hlLeft = i;
+                hlRight = j;
+                var tmp = numbers[i];
+                numbers[i] = numbers[j];
+                numbers[j] = tmp;
+
+                i++;
+                j--;
+            }
+            StateHasChanged();
+            await Task.Delay(20);
+        }
+
+        if (left < j)
+            await QuickSortFunc(numbers, left, j);
+
+        if (i < right)
+            await QuickSortFunc(numbers, i, right);
+		
+		hlLeft = -1;
+        hlRight = -1;
+        hlPivot = -1;
+    }
+}
