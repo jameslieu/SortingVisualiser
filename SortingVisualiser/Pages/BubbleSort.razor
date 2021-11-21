@@ -1,0 +1,67 @@
+﻿@page "/bubble-sort"
+<PageTitle>Bubble Sort</PageTitle>
+
+<h1>Bubble Sort</h1>
+
+<div class="array-container">
+    @for (var i = 0; i < @array.Length; i++)
+    {
+        <div class="array-bar"
+            style=@($"height: {@array[i]}px; {StyleForNumber(i)}; width: 10px;")>
+        </div>
+    }
+</div>
+
+<button type="button" class="btn btn-light" disabled=@btnIsDisabled @onclick="Generate">Generate new array</button>
+<button type="button" class="btn btn-primary" disabled=@btnIsDisabled @onclick="Sort">Sort</button>
+
+@code {
+    private int hlLeft = -1;
+    private int hlRight = -1;
+
+    private bool btnIsDisabled = false;
+    private int[] array = ArrayGenerator.Generate(80);
+
+    private string StyleForNumber(int n)
+    {
+        if (n == hlLeft) return "background-color: #705E78";
+        if (n == hlRight) return "background-color: #705E78";
+        return "background-color: #FEA443";
+    }
+
+    private void Generate()
+    {
+        array = ArrayGenerator.Generate(80);
+    }
+
+    private async Task Sort()
+    {
+        btnIsDisabled = true;
+        await BubbleSortFunc(array);
+        btnIsDisabled = false;
+    }
+
+    private async Task BubbleSortFunc(int[] arr)
+    {
+
+        for (var i = 0; i <= arr.Length - 2; i++)
+        {
+            for (var j = 0; j <= arr.Length - 2; j++)
+            {
+                if (arr[j] > arr[j + 1])
+                {
+                    hlLeft = j;
+                    hlRight = j + 1;
+                    var temp = arr[j + 1];
+                    arr[j + 1] = arr[j];
+                    arr[j] = temp;
+                    StateHasChanged();
+                    await Task.Delay(20);
+                }
+            }
+        }
+        hlLeft = -1;
+        hlRight = -1;
+    }
+}
+

@@ -6,8 +6,7 @@
 <div class="array-container">
     @for (var i = 0; i < @array.Length; i++)
     {
-        <div
-			class="array-bar"
+        <div class="array-bar"
             style=@($"height: {@array[i]}px; {StyleForNumber(i)}")>
         </div>
     }
@@ -51,7 +50,7 @@
 
         var pivotIndex = (left + right) / 2;
         var pivot = numbers[pivotIndex];
-		hlPivot = pivotIndex;
+        hlPivot = pivotIndex;
 
         while (i < j)
         {
@@ -81,8 +80,8 @@
 
         if (i < right)
             await QuickSortFunc(numbers, i, right);
-		
-		hlLeft = -1;
+        
+        hlLeft = -1;
         hlRight = -1;
         hlPivot = -1;
     }

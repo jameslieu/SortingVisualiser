@@ -2,10 +2,10 @@ using NUnit.Framework;
 
 namespace SortingAlgo.Tests
 {
-    public class QuickSortTests
+    public class BubbleSortTests
     {
         [Test]
-        public void QuickSort_Should_Sort_In_Numerical_Order()
+        public void BubbleSort_Should_Sort_In_Numerical_Order()
         {
             // arrange
             var numbers = new int[]
@@ -14,7 +14,7 @@ namespace SortingAlgo.Tests
             };
 
             // act
-            var actual = QuickSort.Sort(numbers, 0, numbers.Length - 1);
+            var actual = BubbleSort.Sort(numbers);
 
             // assert
             var expected = new int[]
@@ -26,7 +26,7 @@ namespace SortingAlgo.Tests
         }
 
         [Test]
-        public void QuickSort_Should_Sort_In_Numerical_Order_large_volume()
+        public void BubbleSort_Should_Sort_In_Numerical_Order_large_volume()
         {
             // arrange
             var numbers = new int[]
@@ -45,7 +45,7 @@ namespace SortingAlgo.Tests
             };
 
             // act
-            var actual = QuickSort.Sort(numbers, 0, numbers.Length - 1);
+            var actual = BubbleSort.Sort(numbers);
 
             // assert
             var expected = new int[]
