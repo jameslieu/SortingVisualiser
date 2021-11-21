@@ -1,6 +1,8 @@
 ﻿@page "/quick-sort"
 <PageTitle>Quick Sort</PageTitle>
 
+<h1>Quick Sort</h1>
+
 <div class="array-container">
     @for (var i = 0; i < @array.Length; i++)
     {
@@ -11,8 +13,8 @@
     }
 </div>
 
-<button class="btn btn-light" disabled=@btnIsDisabled @onclick="Generate">Generate new array</button>
-<button class="btn btn-primary" disabled=@btnIsDisabled @onclick="Sort">Sort</button>
+<button type="button" class="btn btn-light" disabled=@btnIsDisabled @onclick="Generate">Generate new array</button>
+<button type="button" class="btn btn-primary" disabled=@btnIsDisabled @onclick="Sort">Sort</button>
 
 @code {
     private int hlLeft = -1;
