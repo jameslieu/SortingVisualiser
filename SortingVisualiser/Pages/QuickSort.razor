@@ -7,7 +7,7 @@
     @for (var i = 0; i < @array.Length; i++)
     {
         <div class="array-bar"
-            style=@($"height: {@array[i]}px; {StyleForNumber(i)}")>
+            style=@($"height: {@array[i]}px; {StyleForNumber(i)}; width: 10px;")>
         </div>
     }
 </div>
@@ -21,7 +21,7 @@
     private int hlPivot = -1;
 
     private bool btnIsDisabled = false;
-    private int[] array = ArrayGenerator.Generate();
+    private int[] array = ArrayGenerator.Generate(80);
 
     private string StyleForNumber(int n)
     {
@@ -33,7 +33,7 @@
 
     private void Generate()
     {
-        array = ArrayGenerator.Generate();
+        array = ArrayGenerator.Generate(80);
     }
 
     private async Task Sort()
