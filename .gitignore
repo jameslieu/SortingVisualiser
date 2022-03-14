@@ -3,7 +3,7 @@ build/
 [Bb]in
 [Dd]ebug*/
 obj/
-[Rr]elease*/
+# [Rr]elease*/
 _ReSharper*/
 [Tt]est[Rr]esult
 [Bb]uild[Ll]og.*
@@ -34,3 +34,4 @@ _ReSharper*/
 *.zip
 *.[Pp]ublish.xml
 .vs/
+.vscode/

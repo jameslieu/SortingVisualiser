@@ -17,6 +17,13 @@ _Quick sort_
 _Bubble sort_
 
 ---
+##### Deploy to Heroku (note to self)
+
+```
+$ dotnet publish -c Release -o release
+```
+
+---
 ##### Prerequisites
 
 - .NET 6
