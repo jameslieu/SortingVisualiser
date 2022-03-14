@@ -20,7 +20,7 @@ _Bubble sort_
 ##### Deploy to Heroku (note to self)
 
 ```
-$ dotnet publish -c Release -o release
+$ dotnet publish SortingVisualiser -c Release -o release
 ```
 
 ---
